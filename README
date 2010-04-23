@@ -1,13 +1,11 @@
 InPlaceEditorEnhanced
 =====================
 
-Introduction goes here.
+v 0.1 - Avril 2010
+Adding in_place_collection_editor_enhanced_field, that using fonctionnality of Ajax.InPlaceCollectionEditor
 
 
 Example
 =======
 
-Example goes here.
-
-
-Copyright (c) 2010 [name of plugin creator], released under the MIT license
+see wiki for more detailled information : http://wiki.github.com/supernini/in_place_editor_enhanced/

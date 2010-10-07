@@ -96,8 +96,14 @@ module InPlaceEditorEnhancedHelper
     choices = object.send(method).class.find(:all).collect {|o|[o.name, o.id] } if choices == :all
     tag_options = { :tag => "span", :class => "in_place_select_field", :id => "#{object}_#{method}_#{tag.object.id}_in_place_selector"}.merge!(tag_options)
     in_place_selector_options[:url] ||= url_for({ :action => "set_#{object}_#{method}", :id => tag.object.id })
-#    # in_place_selector_options = { :ok_button => false, :submit_on_blur => true }.merge!(in_place_selector_options)
+    #    # in_place_selector_options = { :ok_button => false, :submit_on_blur => true }.merge!(in_place_selector_options)
     name = object.send(method).name rescue '(none)'
+    name = (((name=='') or (!name))?'(none)':name)
+    choices.each do |item, value|
+      if value.to_s==tag.object.send(method).to_s
+        name = "#{item}"
+      end
+    end
     content_tag(tag_options.delete(:tag), name, tag_options) +
       in_place_collection_editor_enhanced(tag_options[:id], choices, in_place_selector_options)
   end
@@ -108,7 +114,7 @@ module InPlaceEditorEnhancedHelper
     tag_options = {:tag => "span", :id => "#{object}_#{method}_#{tag.object.id}_in_place_editor", :class => "in_place_editor_field"}.merge!(tag_options)
     in_place_editor_options[:url] = in_place_editor_options[:url] || url_for({ :action => "set_#{object}_#{method}", :id => tag.object.id })
     name = tag.object.send(method) rescue '(none)'
-    name = (name==''?'(none)':name)
+    name = (((name=='') or (!name))?'(none)':name)
     content_tag(tag_options.delete(:tag), name, tag_options) +
       in_place_editor_enhanced(tag_options[:id], in_place_editor_options)
   end

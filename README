@@ -1,7 +1,10 @@
 InPlaceEditorEnhanced
 =====================
 
-v 0.1 - Avril 2010
+v 0.2 - October 2010
+Adding '(none)', for collection when value is null or empty
+
+v 0.1 - April 2010
 Adding in_place_collection_editor_enhanced_field, that using fonctionnality of Ajax.InPlaceCollectionEditor
 
 
